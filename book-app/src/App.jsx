@@ -11,8 +11,9 @@ function App() {
 
   async function fetchBooks() {
     setLoading(true)
-    const response = await fetch ("fetch(`https://openlibrary.org/search.json?q=${query}`)")
+    const response = await fetch (`https://openlibrary.org/search.json?q=${query}`)
     const data = await response.json()
+    console.log(data)
     setBooks(data.docs.map((book) => {
       return { 
         title: book.title,
@@ -21,6 +22,7 @@ function App() {
         language: book.language?.[0]
       }
     }))
+    setQuery("")
     setLoading(false)
   }
 
@@ -43,18 +45,22 @@ function App() {
   year: "2026",
   genre: "Programming"
  }]
- console.log(books)
 
  const recommendedBooks = DummyBooks.filter((book) => {
     return book.genre === "Fantasy"
  });
 
+ console.log(books)
+
   return (
     <>
     <h1>LIBRARY</h1>
-    <SearchBar onSearch = {handleSubmit}/>
+    <SearchBar 
+      query={query}
+      setQuery={setQuery}
+      onSearch = {handleSubmit}/>
     <RecommendedSection recommendedBooks={recommendedBooks}/>
-    <BookList books={DummyBooks}/>
+    <BookList books={books}/>
     </>
   )
 }
