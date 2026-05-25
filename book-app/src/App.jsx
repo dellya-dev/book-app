@@ -9,6 +9,7 @@ function App() {
   const [books, setBooks] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+  const [search, setSearch] = useState(false)
 
   if (loading) {
     return "Loading..."
@@ -35,10 +36,15 @@ function App() {
     }
     setQuery("")
     setLoading(false)
+    setSearch(true)
   }
 
   if (error) {
-    return  "Something went wrong"
+    return "Something went wrong"
+  }
+
+  if (search === true && books.length === 0) {
+    return "Empty data"
   }
 
   function handleSubmit(e) {
