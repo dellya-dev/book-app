@@ -5,6 +5,7 @@ function BookCard({ book }) {
       <img src={book.cover} />
       <p>{book.author}</p>
       <p>{book.year} • {book.language}</p>
+      
     </div>
   )
 }

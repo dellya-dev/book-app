@@ -20,9 +20,9 @@ function App() {
     try {
       const response = await fetch(`https://openlibrary.org/search.json?q=${query}`)
       const data = await response.json()
-      console.log(data)
       setBooks(data.docs.map((book) => {
         return {
+          id: book.key,
           title: book.title,
           cover: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`,
           author: book.author_name?.[0],
@@ -60,11 +60,6 @@ function App() {
 
   console.log(dummyBooks)
 
-  const recommendedBooks = books.filter((book) => {
-    return book.year === 2007
-  });
-
-  console.log(books)
 
   return (
     <>
@@ -77,7 +72,7 @@ function App() {
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {empty && books.length === 0 && !loading && !error && <p>Empty data</p> }
-      <RecommendedSection recommendedBooks={recommendedBooks} />
+      <RecommendedSection />
       <BookList books={books} />
     </>
   )
