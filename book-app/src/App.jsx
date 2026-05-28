@@ -14,6 +14,9 @@ function App() {
 
   async function fetchBooks() {
     setLoading(true)
+    setEmpty(true)
+    setError("")
+
     try {
       const response = await fetch(`https://openlibrary.org/search.json?q=${query}`)
       const data = await response.json()
@@ -21,7 +24,7 @@ function App() {
       setBooks(data.docs.map((book) => {
         return {
           title: book.title,
-          cover: book.cover_i,
+          cover: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`,
           author: book.author_name?.[0],
           year: book.first_publish_year,
           language: book.language?.[0]
@@ -33,7 +36,6 @@ function App() {
     }
     setQuery("")
     setLoading(false)
-    setEmpty(true)
   }
 
   function handleSubmit(e) {
@@ -74,7 +76,7 @@ function App() {
       />
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {empty && books.length === 0 && !loading && <p>Empty data</p> }
+      {empty && books.length === 0 && !loading && !error && <p>Empty data</p> }
       <RecommendedSection recommendedBooks={recommendedBooks} />
       <BookList books={books} />
     </>
