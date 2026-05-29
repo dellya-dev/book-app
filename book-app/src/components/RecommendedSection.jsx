@@ -16,8 +16,8 @@ function RecommendedSection() {
         .map((book) => {
         return {
           id: book.key,
-          title: book.title,
           cover: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`,
+          title: book.title,
           author: book.author_name?.[0],
           year: book.first_publish_year,
           language: book.language?.[0]

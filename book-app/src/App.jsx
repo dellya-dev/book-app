@@ -10,6 +10,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [empty, setEmpty] = useState(false)
+  const [selectedBook, setSelectedBook] = useState("")
 
 
   async function fetchBooks() {
@@ -23,8 +24,8 @@ function App() {
       setBooks(data.docs.map((book) => {
         return {
           id: book.key,
-          title: book.title,
           cover: `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`,
+          title: book.title,
           author: book.author_name?.[0],
           year: book.first_publish_year,
           language: book.language?.[0]
@@ -42,6 +43,10 @@ function App() {
     e.preventDefault()
 
     fetchBooks()
+  }
+
+  function onSelectBook(book) {
+    setSelectedBook(book)
   }
 
   const dummyBooks = [{
@@ -72,8 +77,12 @@ function App() {
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
       {empty && books.length === 0 && !loading && !error && <p>Empty data</p> }
+
       <RecommendedSection />
-      <BookList books={books} />
+      <BookList 
+        books={books}
+        onSelect={onSelectBook}
+      />
     </>
   )
 }
