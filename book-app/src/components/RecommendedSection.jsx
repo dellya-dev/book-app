@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import BookList from "./BookList"
 
 
-function RecommendedSection() {
+function RecommendedSection({ onSelect }) {
   const [recommendedBooks, setRecommendedBooks] = useState([])
 
   useEffect(() => {
@@ -30,7 +30,10 @@ function RecommendedSection() {
   return (
     <>
       <h3>Recommended Books</h3>
-      <BookList books={recommendedBooks} />
+      <BookList 
+        books={recommendedBooks} 
+        onSelect={onSelect}
+      />
     </>
   )
  

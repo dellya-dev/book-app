@@ -1,6 +1,6 @@
 function BookCard({ book, onSelect }) {
   return(
-    <div onClick={() => onSelect()}>
+    <div onClick={() => onSelect(book)}>
       <img src={book.cover} />
       <h3>{book.title}</h3>
       <p>{book.author}</p>

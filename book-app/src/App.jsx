@@ -2,7 +2,8 @@ import './App.css'
 import SearchBar from './components/SearchBar'
 import RecommendedSection from './components/RecommendedSection'
 import BookList from './components/BookList'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import BookDetail from './components/BookDetail'
 
 function App() {
   const [query, setQuery] = useState("")
@@ -10,7 +11,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
   const [empty, setEmpty] = useState(false)
-  const [selectedBook, setSelectedBook] = useState("")
+  const [selectedBook, setSelectedBook] = useState(null)
 
 
   async function fetchBooks() {
@@ -46,8 +47,19 @@ function App() {
   }
 
   function onSelectBook(book) {
+    // console.log(book)
+    // console.log("CLICKED")
     setSelectedBook(book)
+    // console.log(selectedBook)
   }
+
+  function handleClose() {
+    setSelectedBook(null)
+  }
+
+  useEffect(() => {
+  console.log(selectedBook)
+}, [selectedBook])
 
   const dummyBooks = [{
     id: 1,
@@ -63,7 +75,6 @@ function App() {
     genre: "Programming"
   }]
 
-  console.log(dummyBooks)
 
 
   return (
@@ -72,17 +83,26 @@ function App() {
       <SearchBar
         query={query}
         setQuery={setQuery}
-        onSearch={handleSubmit} 
+        onSearch={handleSubmit}
       />
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}
-      {empty && books.length === 0 && !loading && !error && <p>Empty data</p> }
+      {empty && books.length === 0 && !loading && !error && <p>Empty data</p>}
 
-      <RecommendedSection />
-      <BookList 
+      <RecommendedSection 
+        onSelect={onSelectBook}
+      />
+      <BookList
         books={books}
         onSelect={onSelectBook}
       />
+
+      {selectedBook && (
+      <BookDetail 
+        book={selectedBook}
+        onClose={handleClose}
+      />
+      )}
     </>
   )
 }
