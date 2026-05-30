@@ -5,8 +5,11 @@ function BookDetail({ book, onClose }) {
   console.log(book)
   return (
     <>
-      <div className='popup-backdrop'>
-        <div className='popup-card'>
+      <div className='overplay' onClick={onClose}>
+        <div 
+          className='modal'
+          onClick={(e) => e.stopPropagation()}
+        >
           <button onClick={() => onClose()}>❌</button>
           <div>
             <img src={book.cover} />
