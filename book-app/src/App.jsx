@@ -2,7 +2,7 @@ import './App.css'
 import SearchBar from './components/SearchBar'
 import RecommendedSection from './components/RecommendedSection'
 import BookList from './components/BookList'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import BookDetail from './components/BookDetail'
 
 function App() {
@@ -57,9 +57,9 @@ function App() {
     setSelectedBook(null)
   }
 
-  useEffect(() => {
-  console.log(selectedBook)
-}, [selectedBook])
+//   useEffect(() => {
+//   console.log(selectedBook)
+// }, [selectedBook])
 
   const dummyBooks = [{
     id: 1,
@@ -75,7 +75,7 @@ function App() {
     genre: "Programming"
   }]
 
-
+  console.log(dummyBooks)
 
   return (
     <>

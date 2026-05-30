@@ -1,22 +1,22 @@
-function BookDetail({ book }) {
+import './BookDetail.css'
+
+function BookDetail({ book, onClose }) {
+  console.log("BOOK DETAIL RENDER")
+  console.log(book)
   return (
     <>
-    {/* <div>
-      <div>
-        <button onClick={() => onClose()}>❌</button>
-        <div>
-          <img src={book.cover} />
-          <h3>{book.title}</h3>
-          <p>{book.author}</p>
-          <p>{book.year} • {book.language}</p>
+      <div className='popup-backdrop'>
+        <div className='popup-card'>
+          <button onClick={() => onClose()}>❌</button>
+          <div>
+            <img src={book.cover} />
+            <h3>{book.title}</h3>
+            <p>{book.author}</p>
+            <p>{book.year} • {book.language}</p>
+            <button>❤️</button>
+          </div>
         </div>
-        <button>❤️</button>
       </div>
-    </div> */}
-  <div>
-    TEST
-    <h1>{book.title}</h1>
-  </div>
     </>
   )
 }
