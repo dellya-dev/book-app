@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import BookList from "./BookList"
 
 
-function RecommendedSection({ onSelect }) {
+function RecommendedSection({ onSelect, onToggleFavorite }) {
   const [recommendedBooks, setRecommendedBooks] = useState([])
 
   useEffect(() => {
@@ -33,6 +33,7 @@ function RecommendedSection({ onSelect }) {
       <BookList 
         books={recommendedBooks} 
         onSelect={onSelect}
+        onToggleFavorite={onToggleFavorite}
       />
     </>
   )

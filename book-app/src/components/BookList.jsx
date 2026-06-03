@@ -1,6 +1,6 @@
 import BookCard from '../components/BookCard'
 
-function BookList({ books, onSelect }) {
+function BookList({ books, onSelect, onToggleFavorite }) {
   return (
     <>
       {books.map((book) => {
@@ -9,6 +9,7 @@ function BookList({ books, onSelect }) {
             key={book.id}
             book={book}
             onSelect={onSelect}
+            onToggleFavorite={onToggleFavorite}
           />
         )
       })}

@@ -1,8 +1,6 @@
 import './BookDetail.css'
 
-function BookDetail({ book, onClose }) {
-  console.log("BOOK DETAIL RENDER")
-  console.log(book)
+function BookDetail({ book, onClose, onToggleFavorite }) {
   return (
     <>
       <div className='overplay' onClick={onClose}>
@@ -16,7 +14,7 @@ function BookDetail({ book, onClose }) {
             <h3>{book.title}</h3>
             <p>{book.author}</p>
             <p>{book.year} • {book.language}</p>
-            <button>❤️</button>
+            <button onClick={()=> onToggleFavorite(book)}>❤️</button>
           </div>
         </div>
       </div>

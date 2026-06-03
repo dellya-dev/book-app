@@ -1,5 +1,4 @@
 function BookCard({ book, onSelect }) {
-  console.log(book.id)
   return(
     <div onClick={() => onSelect(book)}>
       <img src={book.cover} />

@@ -4,6 +4,7 @@ import RecommendedSection from './components/RecommendedSection'
 import BookList from './components/BookList'
 import { useState } from 'react'
 import BookDetail from './components/BookDetail'
+import FavoriteBooks from './components/FavoriteBooks'
 
 function App() {
   const [query, setQuery] = useState("")
@@ -12,6 +13,7 @@ function App() {
   const [error, setError] = useState("")
   const [empty, setEmpty] = useState(false)
   const [selectedBook, setSelectedBook] = useState(null)
+  const [favorites, setFavorites] = useState([])
 
 
   async function fetchBooks() {
@@ -47,35 +49,38 @@ function App() {
   }
 
   function onSelectBook(book) {
-    // console.log(book)
-    // console.log("CLICKED")
     setSelectedBook(book)
-    // console.log(selectedBook)
   }
 
   function handleClose() {
     setSelectedBook(null)
   }
 
-//   useEffect(() => {
-//   console.log(selectedBook)
-// }, [selectedBook])
+    function handleToggleFavorite(book) {
+   
+      const isFavorite = favorites.some((favorite) => favorite.id === book.id)
+      if (isFavorite) {
+       setFavorites(favorites.filter((favorite) => favorite.id !== book.id)) 
+      } else {
+        setFavorites([...favorites, book]) 
+      }
+    }
 
-  const dummyBooks = [{
-    id: 1,
-    title: "Matahari",
-    author: "Ndoro Putri",
-    year: "2026",
-    genre: "Fantasy"
-  }, {
-    id: 2,
-    title: "Bulan",
-    author: "Sasmita",
-    year: "2026",
-    genre: "Programming"
-  }]
+    console.log(favorites)
 
-  console.log(dummyBooks)
+  // const dummyBooks = [{
+  //   id: 1,
+  //   title: "Matahari",
+  //   author: "Ndoro Putri",
+  //   year: "2026",
+  //   genre: "Fantasy"
+  // }, {
+  //   id: 2,
+  //   title: "Bulan",
+  //   author: "Sasmita",
+  //   year: "2026",
+  //   genre: "Programming"
+  // }]
 
   return (
     <>
@@ -91,16 +96,22 @@ function App() {
 
       <RecommendedSection 
         onSelect={onSelectBook}
+        onToggleFavorite={handleToggleFavorite}
       />
       <BookList
         books={books}
         onSelect={onSelectBook}
+        onToggleFavorite={handleToggleFavorite}
       />
+
+      <FavoriteBooks 
+        favorites={favorites}/>
 
       {selectedBook && (
       <BookDetail 
         book={selectedBook}
         onClose={handleClose}
+        onToggleFavorite={handleToggleFavorite}
       />
       )}
     </>
