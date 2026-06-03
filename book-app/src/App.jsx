@@ -2,7 +2,7 @@ import './App.css'
 import SearchBar from './components/SearchBar'
 import RecommendedSection from './components/RecommendedSection'
 import BookList from './components/BookList'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import BookDetail from './components/BookDetail'
 import FavoriteBooks from './components/FavoriteBooks'
 
@@ -13,7 +13,10 @@ function App() {
   const [error, setError] = useState("")
   const [empty, setEmpty] = useState(false)
   const [selectedBook, setSelectedBook] = useState(null)
-  const [favorites, setFavorites] = useState([])
+  const [favorites, setFavorites] = useState(() => {
+    const saved = localStorage.getItem("favorites")
+    return saved? JSON.parse(saved) : []
+  })
 
 
   async function fetchBooks() {
@@ -66,7 +69,10 @@ function App() {
       }
     }
 
-    console.log(favorites)
+    useEffect(() => {
+      localStorage.setItem("favorites", JSON.stringify(favorites)
+    )
+    }, [favorites])
 
   // const dummyBooks = [{
   //   id: 1,
