@@ -1,6 +1,6 @@
 import './BookDetail.css'
 
-function BookDetail({ book, onClose, onToggleFavorite }) {
+function BookDetail({ book, onClose, onToggleFavorite, favorites }) {
 
   function handleFavorites() {
     onToggleFavorite(book)
@@ -19,7 +19,10 @@ function BookDetail({ book, onClose, onToggleFavorite }) {
             <h3>{book.title}</h3>
             <p>{book.author}</p>
             <p>{book.year} • {book.language}</p>
-            <button onClick={handleFavorites}>❤️</button>
+            <button 
+              onClick={handleFavorites}>
+              {favorites? "👍" : "👎"}
+            </button>
           </div>
         </div>
       </div>

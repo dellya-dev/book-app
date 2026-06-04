@@ -1,0 +1,12 @@
+.search-bar{
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.search-input, .search-button{
+  padding: 8px 18px;
+  border-radius: 8px;
+  margin-right: 8px;
+  box-shadow: 2px 4px rgba(11, 3, 83, 0.301);
+  cursor: pointer;
+}

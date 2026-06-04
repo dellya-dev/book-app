@@ -12,7 +12,7 @@ function RecommendedSection({ onSelect, onToggleFavorite }) {
       const data = await response.json()
       setRecommendedBooks(data.docs
         .sort(() => Math.random() - 0.5)
-        .slice(0, 8)
+        .slice(0, 6)
         .map((book) => {
         return {
           id: book.key,

@@ -1,10 +1,14 @@
 import BookList from "./BookList"
 
-function FavoriteBooks({ favorites }) {
+function FavoriteBooks({ favorites, onSelect }) {
   return (
     <>
       <h3>Favorite Books</h3>
-      <BookList books={favorites} />
+      <BookList 
+        books={favorites}
+        onSelect={onSelect} 
+
+      />
     </>
   )
 }

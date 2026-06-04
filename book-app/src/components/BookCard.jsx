@@ -1,11 +1,17 @@
+import './BookCard.css'
+
 function BookCard({ book, onSelect }) {
-  return(
-    <div onClick={() => onSelect(book)}>
-      <img src={book.cover} />
-      <h3>{book.title}</h3>
-      <p>{book.author}</p>
-      <p>{book.year} • {book.language}</p>
-    </div>
+  return (
+    <>
+      <div className='book-card'>
+        <div onClick={() => onSelect(book)}>
+          <img className="book-cover" src={book.cover} />
+          <p className='book-title'>{book.title}</p>
+          <p className='book-author'>{book.author}</p>
+          <p className='book-year'>{book.year} • {book.language}</p>
+        </div>
+      </div>
+    </>
   )
 }
 

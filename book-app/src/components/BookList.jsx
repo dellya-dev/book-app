@@ -1,8 +1,9 @@
 import BookCard from '../components/BookCard'
+import './BookList.css'
 
 function BookList({ books, onSelect, onToggleFavorite }) {
   return (
-    <>
+    <div className='book-grid'>
       {books.map((book) => {
         return (
           <BookCard
@@ -13,7 +14,7 @@ function BookList({ books, onSelect, onToggleFavorite }) {
           />
         )
       })}
-    </>
+    </div>
   )
 }
 

@@ -90,28 +90,45 @@ function App() {
 
   return (
     <>
-      <h1>LIBRARY</h1>
+      <h1>ILIB</h1>
+
       <SearchBar
         query={query}
         setQuery={setQuery}
         onSearch={handleSubmit}
       />
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {empty && books.length === 0 && !loading && !error && <p>Empty data</p>}
 
-      <RecommendedSection 
-        onSelect={onSelectBook}
-        onToggleFavorite={handleToggleFavorite}
-      />
+      {loading && 
+        <p 
+          className='loading'>
+          Loading...
+        </p>}
+      {error && 
+        <p 
+          className='error'>
+          {error}
+        </p>}
+      {empty && books.length === 0 && !loading && !error && 
+        <p
+          className='data-empty'>
+          Empty data
+        </p>}
+
       <BookList
         books={books}
         onSelect={onSelectBook}
         onToggleFavorite={handleToggleFavorite}
       />
 
+      <RecommendedSection 
+        onSelect={onSelectBook}
+        onToggleFavorite={handleToggleFavorite}
+      />
+
       <FavoriteBooks 
-        favorites={favorites}/>
+        favorites={favorites}
+         onSelect={onSelectBook}
+      />
 
       {selectedBook && (
       <BookDetail 

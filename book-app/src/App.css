@@ -1,0 +1,6 @@
+.loading, .error, .data-empty{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: large;
+  font-weight: 500;
+}
