@@ -7,7 +7,7 @@ function RecommendedSection({ onSelect, onToggleFavorite }) {
 
   useEffect(() => {
     async function fetchRecommendedBooks() {
-      const keyWords = "fantasy"
+      const keyWords = "programming"
       const response = await fetch(`https://openlibrary.org/search.json?q=${keyWords}`)
       const data = await response.json()
       setRecommendedBooks(data.docs
@@ -29,7 +29,7 @@ function RecommendedSection({ onSelect, onToggleFavorite }) {
 
   return (
     <>
-      <h3>Recommended Books</h3>
+      <h3 style={{textAlign: "left", marginLeft: "10px",  marginTop:"30px", marginBottom:"-50px"}}>Recommended Books</h3>
       <BookList 
         books={recommendedBooks} 
         onSelect={onSelect}

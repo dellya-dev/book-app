@@ -90,7 +90,7 @@ function App() {
 
   return (
     <>
-      <h1>ILIB</h1>
+      <h1>IDELL LIB</h1>
 
       <SearchBar
         query={query}

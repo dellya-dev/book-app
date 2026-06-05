@@ -1,5 +1,6 @@
 .book-grid{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  row-gap: 20px;
+  row-gap: 50px;
+  margin-top: 70px;
 }

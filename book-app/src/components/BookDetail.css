@@ -12,4 +12,25 @@
     background: rgb(53, 49, 49);
     padding: 20px;
     border: 1px solid black;
+    width: 200px;
+    position: relative;
+}
+
+.detail-book{
+    margin-top: 10px;
+}
+
+.close-button{
+    background: rgb(53, 49, 49);
+    border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.favorite-button{
+    margin-top: 10px;
+    background-color: rgb(53, 49, 49);
+    border: none;
 }

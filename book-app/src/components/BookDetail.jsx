@@ -1,6 +1,6 @@
 import './BookDetail.css'
 
-function BookDetail({ book, onClose, onToggleFavorite, favorites }) {
+function BookDetail({ book, onClose, onToggleFavorite }) {
 
   function handleFavorites() {
     onToggleFavorite(book)
@@ -13,15 +13,20 @@ function BookDetail({ book, onClose, onToggleFavorite, favorites }) {
           className='modal'
           onClick={(e) => e.stopPropagation()}
         >
-          <button onClick={() => onClose()}>❌</button>
-          <div>
+          <button 
+            className='close-button'
+            onClick={() => onClose()}>
+            ❌
+            </button>
+          <div className='detail-book'>
             <img src={book.cover} />
             <h3>{book.title}</h3>
             <p>{book.author}</p>
             <p>{book.year} • {book.language}</p>
-            <button 
+            <button
+              className='favorite-button' 
               onClick={handleFavorites}>
-              {favorites? "👍" : "👎"}
+              ❤️
             </button>
           </div>
         </div>
