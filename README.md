@@ -41,11 +41,13 @@ A simple React application that fetches book data from an external API and displ
 
 ### Desktop
 
-*Add your desktop screenshot here.*
+<img width="1285" height="627" alt="Cuplikan layar 2026-07-03 105919" src="https://github.com/user-attachments/assets/2c5bb3b3-8c08-4916-8d81-b1c1e023bf4d" />
+
 
 ### Mobile
 
-*Add your mobile screenshot here.*
+<img width="464" height="571" alt="Cuplikan layar 2026-07-03 110041" src="https://github.com/user-attachments/assets/97626d26-68d5-45a1-9134-bc441c817813" />
+
 
 ---
 
@@ -100,6 +102,7 @@ npm install
 Run the development server
 
 ```bash
+cd book-app
 npm run dev
 ```
 
