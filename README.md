@@ -54,7 +54,11 @@ A simple React application that fetches book data from an external API and displ
 ## 🌐 Live Demo
 
 ```
+https://book-app-seven-kappa.vercel.app/
 
+```
+```
+https://book-app-git-main-dellya-devs-projects.vercel.app/
 
 ```
 
